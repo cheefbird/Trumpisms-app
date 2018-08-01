@@ -12,21 +12,29 @@ export default class SearchCard extends PureComponent {
   render() {
     return (
       <KeyboardAvoidingView
-        style={styles.container}
-        behavior="position"
+        behavior="padding"
         enabled={true}
         contentContainerStyle={styles.safeView}
       >
-        <Image
-          source={{
-            uri: "https://www.jasonfox.net/wp-content/uploads/2014/11/Trump.gif"
-          }}
-          style={styles.image}
-        />
-        <View style={styles.subContainer}>
+        <View style={styles.container}>
+          <Image
+            source={{
+              uri:
+                "https://www.jasonfox.net/wp-content/uploads/2014/11/Trump.gif"
+            }}
+            style={styles.image}
+          />
           <Text style={styles.titleText}>Search for Trumpisms!</Text>
-          <TextInput style={styles.input} />
         </View>
+        <TextInput
+          style={styles.input}
+          multiline={true}
+          placeholder="i.e. Muslims"
+          returnKeyType="search"
+          autoCorrect={false}
+          autoCapitalize="none"
+          keyboardAppearance="dark"
+        />
       </KeyboardAvoidingView>
     );
   }
@@ -34,10 +42,9 @@ export default class SearchCard extends PureComponent {
 
 const styles = StyleSheet.create({
   container: {
-    alignItems: "center"
-  },
-  subContainer: {
-    alignItems: "stretch"
+    flex: 0.75,
+    alignItems: "center",
+    justifyContent: "space-evenly"
   },
   image: {
     width: 180,
@@ -48,16 +55,19 @@ const styles = StyleSheet.create({
     fontWeight: "bold"
   },
   safeView: {
-    marginBottom: 50
+    marginBottom: 0
   },
   input: {
     backgroundColor: "#fff",
-    borderRadius: 15,
+    borderRadius: 20,
     borderColor: "#000",
-    borderWidth: 1,
+    borderWidth: 2,
     fontSize: 20,
     paddingHorizontal: 12,
-    paddingVertical: 8,
-    minWidth: 75
+    paddingBottom: 8,
+    paddingTop: 9,
+    minWidth: 75,
+    alignItems: "center",
+    marginHorizontal: 8
   }
 });
