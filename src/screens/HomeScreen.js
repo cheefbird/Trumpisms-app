@@ -1,9 +1,12 @@
+import _ from "lodash";
 import React, { Component } from "react";
 import { StyleSheet, View } from "react-native";
+import { connect } from "react-redux";
 
+import { fetchSearchResults } from "../actons";
 import SearchCard from "../components/SearchCard";
 
-export default class HomeScreen extends Component {
+class HomeScreen extends Component {
   render() {
     return (
       <View style={styles.container}>
@@ -13,6 +16,15 @@ export default class HomeScreen extends Component {
   }
 }
 
+const mapStateToProps = state => {
+  const { results, userQuery } = state.searchResults;
+  const quotes = _.map(results, quote => {
+    return { ...quote };
+  });
+
+  return { quotes, userQuery };
+};
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -21,3 +33,8 @@ const styles = StyleSheet.create({
     backgroundColor: "orange"
   }
 });
+
+export default connect(
+  mapStateToProps,
+  { fetchSearchResults }
+)(HomeScreen);
