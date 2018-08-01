@@ -15,6 +15,8 @@ export default class SearchCard extends PureComponent {
     this.state = { query: "" };
   }
 
+  executeSearch = () => this.props.searchAction(this.state.query);
+
   render() {
     return (
       <KeyboardAvoidingView
@@ -40,7 +42,7 @@ export default class SearchCard extends PureComponent {
           autoCapitalize="none"
           keyboardAppearance="dark"
           onChangeText={text => this.setState({ query: text })}
-          onSubmitEditing={this.props.searchAction(this.state.query)}
+          onSubmitEditing={this.executeSearch}
         />
       </KeyboardAvoidingView>
     );
