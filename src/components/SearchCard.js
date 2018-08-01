@@ -1,28 +1,43 @@
 import React, { PureComponent } from "react";
-import { StyleSheet, View, Text, TextInput, Image } from "react-native";
+import {
+  StyleSheet,
+  View,
+  Text,
+  TextInput,
+  Image,
+  KeyboardAvoidingView
+} from "react-native";
 
 export default class SearchCard extends PureComponent {
   render() {
     return (
-      <View style={styles.container}>
+      <KeyboardAvoidingView
+        style={styles.container}
+        behavior="position"
+        enabled={true}
+        contentContainerStyle={styles.safeView}
+      >
         <Image
           source={{
             uri: "https://www.jasonfox.net/wp-content/uploads/2014/11/Trump.gif"
           }}
           style={styles.image}
         />
-        <Text style={styles.titleText}>Search for Trumpisms!</Text>
-        <TextInput style={styles.input} />
-      </View>
+        <View style={styles.subContainer}>
+          <Text style={styles.titleText}>Search for Trumpisms!</Text>
+          <TextInput style={styles.input} />
+        </View>
+      </KeyboardAvoidingView>
     );
   }
 }
 
 const styles = StyleSheet.create({
   container: {
-    textAlign: "center",
-    margin: 10,
     alignItems: "center"
+  },
+  subContainer: {
+    alignItems: "stretch"
   },
   image: {
     width: 180,
@@ -32,6 +47,9 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: "bold"
   },
+  safeView: {
+    marginBottom: 50
+  },
   input: {
     backgroundColor: "#fff",
     borderRadius: 15,
@@ -40,6 +58,6 @@ const styles = StyleSheet.create({
     fontSize: 20,
     paddingHorizontal: 12,
     paddingVertical: 8,
-    alignSelf: "center"
+    minWidth: 75
   }
 });
