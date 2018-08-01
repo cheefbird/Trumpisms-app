@@ -28,7 +28,6 @@ export default class SearchCard extends PureComponent {
         </View>
         <TextInput
           style={styles.input}
-          multiline={true}
           placeholder="i.e. Muslims"
           returnKeyType="search"
           autoCorrect={false}
