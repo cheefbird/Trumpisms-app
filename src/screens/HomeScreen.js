@@ -1,6 +1,6 @@
 import _ from "lodash";
 import React, { Component } from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, Text } from "react-native";
 import { connect } from "react-redux";
 
 import { fetchSearchResults } from "../actons";
@@ -12,9 +12,16 @@ class HomeScreen extends Component {
   };
 
   render() {
+    const formattedText = `We found ${this.props.quotes.length} quotes!`;
+
     return (
       <View style={styles.container}>
         <SearchCard searchAction={this.search} />
+        {this.props.quotes.length > 0 ? (
+          <View>
+            <Text>{formattedText}</Text>
+          </View>
+        ) : null}
       </View>
     );
   }
@@ -22,8 +29,8 @@ class HomeScreen extends Component {
 
 const mapStateToProps = state => {
   const { results, userQuery } = state.searchResults;
-  const quotes = _.map(results, quote => {
-    return { ...quote };
+  const quotes = _.map(results, val => {
+    return { ...val };
   });
 
   return { quotes, userQuery };
