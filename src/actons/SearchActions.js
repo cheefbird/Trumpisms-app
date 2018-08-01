@@ -9,7 +9,8 @@ export const fetchSearchResults = query => {
     fetch(requestUrl)
       .then(response => response.json())
       .then(json => {
-        const { quotes } = json._embedded;
+        const { _embedded } = json;
+        const { quotes } = _embedded;
 
         const data = {
           results: quotes,
