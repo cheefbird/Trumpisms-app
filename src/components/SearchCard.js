@@ -9,6 +9,12 @@ import {
 } from "react-native";
 
 export default class SearchCard extends PureComponent {
+  constructor(props) {
+    super(props);
+
+    this.state = { query: "" };
+  }
+
   render() {
     return (
       <KeyboardAvoidingView
@@ -33,6 +39,8 @@ export default class SearchCard extends PureComponent {
           autoCorrect={false}
           autoCapitalize="none"
           keyboardAppearance="dark"
+          onChangeText={text => this.setState({ query: text })}
+          onSubmitEditing={this.props.searchAction(this.state.query)}
         />
       </KeyboardAvoidingView>
     );

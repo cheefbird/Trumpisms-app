@@ -7,10 +7,14 @@ import { fetchSearchResults } from "../actons";
 import SearchCard from "../components/SearchCard";
 
 class HomeScreen extends Component {
+  search = query => {
+    this.props.fetchSearchResults(query);
+  };
+
   render() {
     return (
       <View style={styles.container}>
-        <SearchCard />
+        <SearchCard searchAction={this.search} />
       </View>
     );
   }
