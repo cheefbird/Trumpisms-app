@@ -17,11 +17,7 @@ class HomeScreen extends Component {
     return (
       <View style={styles.container}>
         <SearchCard searchAction={this.search} />
-        {this.props.quotes.length > 0 ? (
-          <View>
-            <Text>{formattedText}</Text>
-          </View>
-        ) : null}
+        {this.props.quotes.length > 0 ? <Text>{formattedText}</Text> : null}
       </View>
     );
   }
