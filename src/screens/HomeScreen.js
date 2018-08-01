@@ -1,13 +1,13 @@
 import React, { Component } from "react";
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View } from "react-native";
+
+import SearchCard from "../components/SearchCard";
 
 export default class HomeScreen extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <View style={styles.contentContainer}>
-          <Text>Search for Trumpisms!</Text>
-        </View>
+        <SearchCard />
       </View>
     );
   }
@@ -16,13 +16,8 @@ export default class HomeScreen extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "orange",
     justifyContent: "center",
-    alignItems: "center"
-  },
-  contentContainer: {
-    fontSize: 20,
-    textAlign: "center",
-    margin: 10
+    alignItems: "center",
+    backgroundColor: "orange"
   }
 });
